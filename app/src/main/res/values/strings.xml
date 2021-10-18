@@ -20,6 +20,8 @@
     <string name="Rating">Rating : </string>
     <string name="Review">Review : </string>
     <string name="PlaceHolder">Loading . . .</string>
+    <string name="ConfirmPassword">Confirm Password : </string>
+    <string name="Password">Password :</string>
 
     <!-- Page Titles -->
     <string name="ItemRequestFormTitle">Item Exchange Form</string>
@@ -27,6 +29,7 @@
     <string name="ProfilePageTitle">Profile</string>
     <string name="ItemsForExchange">Items For Exchange</string>
     <string name="ChooseLocation">Choose Your Location From the Map</string>
+    <string name="SignUpPage">Sign Up Page</string>
 
     <!-- Hints -->
     <string name="EnterName">Enter Name</string>
@@ -39,6 +42,7 @@
     <string name="EnterReview">Enter Review Here</string>
     <string name="EnterPhoneNumber">Enter Phone Number</string>
     <string name="EnterAddress">Enter Address</string>
+    <string name="ConfirmPasswordHint">Confirm Password</string>
 
     <!-- Button Texts -->
     <string name="Submit">Submit</string>
@@ -55,8 +59,5 @@
     <string name="DeleteItemText">This Item entry will be deleted forever, Do you wish to Continue?</string>
     <string name="DeleteItemYes">Yes</string>
     <string name="DeleteItemNo">No</string>
-    <string name="Password">Password :</string>
-    <string name="ConfirmPassword">Confirm Password :</string>
-    <string name="SignUpPage">Sign Up Page</string>
 
 </resources>

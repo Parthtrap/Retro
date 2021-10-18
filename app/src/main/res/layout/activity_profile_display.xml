@@ -237,10 +237,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/log_in_edit_text_design"
                     android:ems="10"
                     android:hint="@string/EnterReview"
                     android:inputType="textPersonName"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 

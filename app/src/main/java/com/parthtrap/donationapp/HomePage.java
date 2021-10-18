@@ -71,6 +71,7 @@ public class HomePage extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         FirestoreRecyclerOptions<ExchangeItemClass> options =
                 new FirestoreRecyclerOptions.Builder<ExchangeItemClass>().setQuery(itemCollection.orderBy("rating", Query.Direction.DESCENDING).limit(10), ExchangeItemClass.class).build();
         adapter = new ProfilePageItemAdapter(options);
@@ -79,16 +80,7 @@ public class HomePage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new ProfilePageItemAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Intent intent = new Intent(HomePage.this, ExchangeItemViewPage.class);
-                intent.putExtra("id", documentSnapshot.getId());
-                intent.putExtra("idfrom", "null");
-                startActivity(intent);
-                finish();
-            }
-        });
+
         SearchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,8 +98,28 @@ public class HomePage extends AppCompatActivity {
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(HomePage.this));
                 recyclerView.setAdapter(adapter);
+                adapter.setOnItemClickListener(new ProfilePageItemAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                        Intent intent = new Intent(HomePage.this, ExchangeItemViewPage.class);
+                        intent.putExtra("id", documentSnapshot.getId());
+                        intent.putExtra("idfrom", "null");
+                        startActivity(intent);
+                        finish();
+                    }
+                });
                 adapter.startListening();
 
+            }
+        });
+        adapter.setOnItemClickListener(new ProfilePageItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Intent intent = new Intent(HomePage.this, ExchangeItemViewPage.class);
+                intent.putExtra("id", documentSnapshot.getId());
+                intent.putExtra("idfrom", "null");
+                startActivity(intent);
+                finish();
             }
         });
         adapter.startListening();

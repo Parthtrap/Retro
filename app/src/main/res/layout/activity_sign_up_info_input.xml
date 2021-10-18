@@ -23,10 +23,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="369dp"
+        android:layout_height="362dp"
         android:layout_marginTop="44dp"
-        android:gravity="center"
+        android:gravity="fill|fill_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,14 +56,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/log_in_edit_text_design"
                 android:ems="10"
                 android:hint="@string/EnterName"
                 android:inputType="textPersonName"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
-        <LinearLayout
+        <Space
             android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -85,11 +90,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/log_in_edit_text_design"
                 android:ems="10"
                 android:hint="@string/EnterPhoneNumber"
                 android:inputType="phone"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -121,6 +131,10 @@
 
         </LinearLayout>
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
         <Switch
             android:id="@+id/PublicPhoneSignUpInfoInput"
             android:layout_width="match_parent"
@@ -129,6 +143,10 @@
             android:text="@string/PublicPhoneText"
             android:textColor="@color/white"
             tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,10 +171,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:background="@drawable/log_in_edit_text_design"
                 android:ems="10"
                 android:hint="@string/EnterAddress"
                 android:inputType="textPostalAddress"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </LinearLayout>
