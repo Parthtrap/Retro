@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".HomePage">
 
     <LinearLayout
@@ -23,22 +24,17 @@
 
             <TextView
                 android:id="@+id/TempTextView"
-                android:layout_width="269dp"
+                android:layout_width="match_parent"
                 android:layout_height="57dp"
                 android:gravity="center"
-                android:text="Loading..." />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/LogOutButtonHomePage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:text="LogOut" />
         </LinearLayout>
 
     </LinearLayout>
@@ -57,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Exchange Item" />
+            android:text="@string/ExchangeItem" />
 
         <Space
             android:layout_width="wrap_content"
@@ -69,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Donate Item" />
+            android:text="@string/DonateItem" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,12 +77,13 @@
 
         <EditText
             android:id="@+id/HomePageSearchBar"
-            android:layout_width="218dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Search Item Here"
-            android:inputType="textPersonName" />
+            android:hint="@string/SearchHere"
+            android:inputType="textPersonName"
+            android:textColor="@color/white" />
 
         <Space
             android:layout_width="wrap_content"
@@ -98,8 +95,9 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/search"/>
+            android:src="@drawable/search" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -43,7 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name : " />
+                android:text="@string/Name"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="30dp"
@@ -56,8 +57,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter Name"
-                android:inputType="textPersonName" />
+                android:hint="@string/EnterName"
+                android:inputType="textPersonName"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,7 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Phone Number : " />
+                android:text="@string/PhoneNumber"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="30dp"
@@ -83,8 +86,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter Phone Number"
-                android:inputType="phone" />
+                android:hint="@string/EnterPhoneNumber"
+                android:inputType="phone"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +102,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Email : " />
+                android:text="@string/EmailId"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="30dp"
@@ -111,7 +116,8 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="abc@def.com" />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
@@ -120,7 +126,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Want Everyone to See your Phone Number ?" />
+            android:text="@string/PublicPhoneText"
+            android:textColor="@color/white"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,7 +140,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Address" />
+                android:text="@string/Address"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="30dp"
@@ -145,8 +154,9 @@
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter Address"
-                android:inputType="textPostalAddress" />
+                android:hint="@string/EnterAddress"
+                android:inputType="textPostalAddress"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>
@@ -156,7 +166,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Sumit"
+        android:text="@string/Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

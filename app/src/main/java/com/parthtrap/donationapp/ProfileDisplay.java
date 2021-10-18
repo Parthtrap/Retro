@@ -42,7 +42,7 @@ public class ProfileDisplay extends AppCompatActivity {
     LinearLayout RatingLayout;
     EditText ReviewBox;
     RatingBar RatingBox;
-    Button SubmitRating, LocationChange;
+    Button SubmitRating, LocationChange, LogOutButton;
     float NewRating = 0;
     int RatingCount = 0;
 
@@ -58,6 +58,7 @@ public class ProfileDisplay extends AppCompatActivity {
         AddressBox = findViewById(R.id.AddressDisplayDisplayPage);
         PhoneBox = findViewById(R.id.PhoneDisplayDisplayPage);
         EmailBox = findViewById(R.id.EmailDisplayDisplayPage);
+        LogOutButton = findViewById(R.id.LogOutButton);
         RatingLayout = findViewById(R.id.RatingLayoutProfilePage);
         ReviewBox = findViewById(R.id.ReviewBarProfilePage);
         RatingBox = findViewById(R.id.RatingBarProfilePage);
@@ -86,6 +87,16 @@ public class ProfileDisplay extends AppCompatActivity {
                     PhoneBox.setText(DisplayUser.getPhoneNumber());
                 else
                     PhoneBox.setText("[Hidden]");
+            }
+        });
+
+        LogOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(ProfileDisplay.this, MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 

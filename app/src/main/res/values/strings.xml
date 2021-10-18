@@ -6,6 +6,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="login">Log In</string>
     <string name="get_started">Get Started</string>
+    <string name="LogOut">Log Out</string>
 
     <!-- Info Text -->
     <string name="Name">Name : </string>
@@ -16,27 +17,46 @@
     <string name="Category">Category : </string>
     <string name="WantFor">Want For : </string>
     <string name="Owner">Owner : </string>
+    <string name="Rating">Rating : </string>
+    <string name="Review">Review : </string>
     <string name="PlaceHolder">Loading . . .</string>
 
     <!-- Page Titles -->
     <string name="ItemRequestFormTitle">Item Exchange Form</string>
     <string name="ItemDetailsTitle">Item Details</string>
+    <string name="ProfilePageTitle">Profile</string>
+    <string name="ItemsForExchange">Items For Exchange</string>
+    <string name="ChooseLocation">Choose Your Location From the Map</string>
 
     <!-- Hints -->
     <string name="EnterName">Enter Name</string>
     <string name="EnterCategory">Enter Item Category</string>
     <string name="EnterDesc">Enter Description</string>
     <string name="EnterWantFor">Enter Exchangeable Items</string>
+    <string name="SearchHere">Search Items</string>
+    <string name="EnterEmail">Enter Email ID</string>
+    <string name="EnterPass">Enter Password</string>
+    <string name="EnterReview">Enter Review Here</string>
+    <string name="EnterPhoneNumber">Enter Phone Number</string>
+    <string name="EnterAddress">Enter Address</string>
 
     <!-- Button Texts -->
     <string name="Submit">Submit</string>
     <string name="Interested">Interested ?</string>
     <string name="UploadImage">Upload Image</string>
+    <string name="ExchangeItem">Exchange Item</string>
+    <string name="DonateItem">Donate Item</string>
+    <string name="SubmitRating">Submit Rating</string>
+    <string name="ChangeLocation">Change Your Exchange Location?</string>
+    <string name="PublicPhoneText">Want Everyone to See your Phone Number ?</string>
 
     <!-- Item Delete -->
     <string name="DeleteItemTitle">Delete Item?</string>
     <string name="DeleteItemText">This Item entry will be deleted forever, Do you wish to Continue?</string>
     <string name="DeleteItemYes">Yes</string>
     <string name="DeleteItemNo">No</string>
+    <string name="Password">Password :</string>
+    <string name="ConfirmPassword">Confirm Password :</string>
+    <string name="SignUpPage">Sign Up Page</string>
 
 </resources>

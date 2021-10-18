@@ -26,7 +26,7 @@ import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
 public class HomePage extends AppCompatActivity {
 
     TextView HomePageNameDisplay;
-    Button LogOut, ExchangeItem, DonateItem;
+    Button ExchangeItem, DonateItem;
     ImageButton SearchButton;
     EditText SearchBox;
 
@@ -42,7 +42,6 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        LogOut = findViewById(R.id.LogOutButtonHomePage);
         HomePageNameDisplay = findViewById(R.id.TempTextView);
         ExchangeItem = findViewById(R.id.ExchangeItemButtonHomePage);
         SearchButton = findViewById(R.id.HomePageSearchButton);
@@ -64,15 +63,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        LogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(HomePage.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
+
         ExchangeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

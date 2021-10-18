@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".SignUpPage">
 
     <TextView
@@ -11,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="Sign Up Page"
+        android:text="@string/SignUpPage"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Email ID : "
+                android:text="@string/EmailId"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <Space
@@ -55,8 +58,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter Your Email ID"
+                android:hint="@string/EnterEmail"
                 android:inputType="textEmailAddress"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -72,7 +76,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Password : "
+                android:text="@string/Password"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
 
             <Space
@@ -86,8 +91,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter Password"
+                android:hint="@string/EnterPass"
                 android:inputType="textPassword"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -103,7 +109,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Confirm Password : "
+                android:text="@string/ConfirmPassword"
+                android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <EditText
@@ -112,8 +119,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Confirm Password"
+                android:hint="@string/ConfirmPassword"
                 android:inputType="textPassword"
+                android:textColor="@color/white"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -132,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="Sign Up" />
+                android:text="@string/sign_up" />
 
             <Space
                 android:layout_width="wrap_content"

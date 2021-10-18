@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ProfileDisplay">
 
         <TextView
@@ -15,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="Profile"
+            android:text="@string/ProfilePageTitle"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +42,8 @@
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Name : " />
+                    android:text="@string/Name"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -50,7 +53,8 @@
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Email : " />
+                    android:text="@string/EmailId"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -60,7 +64,8 @@
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Phone : " />
+                    android:text="@string/PhoneNumber"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -70,7 +75,8 @@
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Address : " />
+                    android:text="@string/Address"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -80,7 +86,8 @@
                     android:id="@+id/textView24"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rating : " />
+                    android:text="@string/Rating"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <Space
@@ -96,7 +103,8 @@
                     android:id="@+id/NameDisplayDisplayPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading . . ." />
+                    android:text="@string/PlaceHolder"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -106,7 +114,8 @@
                     android:id="@+id/EmailDisplayDisplayPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading . . ." />
+                    android:text="@string/PlaceHolder"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -116,7 +125,8 @@
                     android:id="@+id/PhoneDisplayDisplayPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading . . ." />
+                    android:text="@string/PlaceHolder"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -126,7 +136,8 @@
                     android:id="@+id/AddressDisplayDisplayPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading . . ." />
+                    android:text="@string/PlaceHolder"
+                    android:textColor="@color/white" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -136,7 +147,8 @@
                     android:id="@+id/RatingDisplayDisplayPage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading . . ." />
+                    android:text="@string/PlaceHolder"
+                    android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>
 
@@ -145,7 +157,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Items For Exchange"
+            android:text="@string/ItemsForExchange"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
@@ -184,8 +197,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Rating" />
+                    android:paddingStart="10dp"
+                    android:text="@string/Rating"
+                    android:textColor="@color/white"
+                    tools:ignore="RtlSymmetry" />
 
                 <RatingBar
                     android:id="@+id/RatingBarProfilePage"
@@ -212,8 +227,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Review" />
+                    android:paddingStart="10dp"
+                    android:text="@string/Review"
+                    android:textColor="@color/white"
+                    tools:ignore="RtlSymmetry" />
 
                 <EditText
                     android:id="@+id/ReviewBarProfilePage"
@@ -221,17 +238,22 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:hint="Enter Review Here"
-                    android:inputType="textPersonName" />
+                    android:hint="@string/EnterReview"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
 
             <Button
                 android:id="@+id/RatingSubmitButtonProfilePage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="Submit Rating" />
+                android:text="@string/SubmitRating" />
         </LinearLayout>
 
         <Button
@@ -239,10 +261,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Change Your Exchange Location?"
+            android:text="@string/ChangeLocation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ItemListRecyclerViewProfilePage" />
+
+        <Button
+            android:id="@+id/LogOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LogOut"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
