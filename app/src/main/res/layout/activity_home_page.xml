@@ -99,8 +99,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:scaleType="fitXY"
-
-            app:srcCompat="@drawable/Search" />
+            android:src="@drawable/search"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

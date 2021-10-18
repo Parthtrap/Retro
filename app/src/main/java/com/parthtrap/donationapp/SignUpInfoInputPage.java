@@ -21,7 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.parthtrap.donationapp.HelperClasses.UserInfoHelper;
 
-public class SignUpInfoInput extends AppCompatActivity {
+public class SignUpInfoInputPage extends AppCompatActivity {
 
     TextView EmailDisplay;
     EditText NameBox, PhoneBox, AddressBox;
@@ -72,19 +72,19 @@ public class SignUpInfoInput extends AppCompatActivity {
                     userCollection.set(newuser).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            Intent i = new Intent(SignUpInfoInput.this, HomePage.class);
+                            Intent i = new Intent(SignUpInfoInputPage.this, SignUpMapInfoPage.class);
                             startActivity(i);
                             finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SignUpInfoInput.this, e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpInfoInputPage.this, e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
                 else
-                    Toast.makeText(SignUpInfoInput.this, "Fill All The Fields Above", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpInfoInputPage.this, "Fill All The Fields Above", Toast.LENGTH_SHORT).show();
             }
         });
 

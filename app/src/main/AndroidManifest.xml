@@ -9,12 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
-        <activity android:name=".ExchangeItemView"></activity>
-        <activity android:name=".ExchangeItemRequest" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/API_KEY" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".SignUpMapInfoPage"></activity>
+        <activity android:name=".ExchangeItemViewPage" />
+        <activity android:name=".ExchangeItemUploadPage" />
         <activity android:name=".LogInPage" />
         <activity android:name=".ProfileDisplay" />
         <activity android:name=".HomePage" />
-        <activity android:name=".SignUpInfoInput" />
+        <activity android:name=".SignUpInfoInputPage" />
         <activity android:name=".SignUpPage" />
         <activity android:name=".MainActivity">
             <intent-filter>

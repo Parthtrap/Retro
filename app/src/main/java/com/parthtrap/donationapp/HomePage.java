@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +25,10 @@ import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
 
 public class HomePage extends AppCompatActivity {
 
-    TextView view;
+    TextView HomePageNameDisplay;
     Button LogOut, ExchangeItem, DonateItem;
+    ImageButton SearchButton;
+    EditText SearchBox;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser user = auth.getCurrentUser();
@@ -39,17 +43,19 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         LogOut = findViewById(R.id.LogOutButtonHomePage);
-        view = findViewById(R.id.TempTextView);
+        HomePageNameDisplay = findViewById(R.id.TempTextView);
         ExchangeItem = findViewById(R.id.ExchangeItemButtonHomePage);
+        SearchButton = findViewById(R.id.HomePageSearchButton);
+        SearchBox = findViewById(R.id.HomePageSearchBar);
 
         db.collection("UserProfiles").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String UserName = documentSnapshot.getString("name");
-                view.setText("Welcome " + UserName);
+                HomePageNameDisplay.setText("Welcome " + UserName);
             }
         });
-        view.setOnClickListener(new View.OnClickListener() {
+        HomePageNameDisplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(HomePage.this, ProfileDisplay.class);
@@ -70,11 +76,10 @@ public class HomePage extends AppCompatActivity {
         ExchangeItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, ExchangeItemRequest.class);
+                Intent i = new Intent(HomePage.this, ExchangeItemUploadPage.class);
                 startActivity(i);
             }
         });
-
         FirestoreRecyclerOptions<ExchangeItemClass> options =
                 new FirestoreRecyclerOptions.Builder<ExchangeItemClass>().setQuery(itemCollection.orderBy("rating", Query.Direction.DESCENDING).limit(10), ExchangeItemClass.class).build();
         adapter = new ProfilePageItemAdapter(options);
@@ -86,11 +91,32 @@ public class HomePage extends AppCompatActivity {
         adapter.setOnItemClickListener(new ProfilePageItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Intent intent = new Intent(HomePage.this, ExchangeItemView.class);
+                Intent intent = new Intent(HomePage.this, ExchangeItemViewPage.class);
                 intent.putExtra("id", documentSnapshot.getId());
                 intent.putExtra("idfrom", "null");
                 startActivity(intent);
                 finish();
+            }
+        });
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String SearchedString = SearchBox.getText().toString().toLowerCase().trim();
+                Query query = null;
+                if (SearchedString.isEmpty()) {
+                    query = itemCollection.orderBy("rating", Query.Direction.DESCENDING);
+                } else {
+                    query = itemCollection.whereEqualTo("name", SearchedString).orderBy("rating", Query.Direction.DESCENDING);
+                }
+                FirestoreRecyclerOptions<ExchangeItemClass> option =
+                        new FirestoreRecyclerOptions.Builder<ExchangeItemClass>().setQuery(query, ExchangeItemClass.class).build();
+                adapter = new ProfilePageItemAdapter(option);
+                RecyclerView recyclerView = findViewById(R.id.HomePageRecyclerView);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setLayoutManager(new LinearLayoutManager(HomePage.this));
+                recyclerView.setAdapter(adapter);
+                adapter.startListening();
+
             }
         });
         adapter.startListening();

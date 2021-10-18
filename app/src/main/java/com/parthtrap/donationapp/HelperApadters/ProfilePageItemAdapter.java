@@ -28,7 +28,7 @@ public class ProfilePageItemAdapter extends FirestoreRecyclerAdapter<ExchangeIte
 
     @Override
     protected void onBindViewHolder(@NonNull @NotNull ItemHolder holder, int position, @NonNull @NotNull ExchangeItemClass model) {
-        holder.NameBox.setText(model.getName());
+        holder.NameBox.setText(model.getName().substring(0, 1).toUpperCase() + model.getName().substring(1));
         holder.DescBox.setText(model.getDescription());
         Picasso.get().load(model.getImageURL()).into(holder.ImageBox);
     }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExchangeItemView">
+    android:background="@drawable/background"
+    tools:context=".ExchangeItemViewPage">
 
     <TextView
         android:id="@+id/textView13"
@@ -12,7 +13,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
         android:gravity="center"
-        android:text="Item Details"
+        android:text="@string/ItemDetailsTitle"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Name : " />
+                android:text="@string/Name"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -61,7 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Description : " />
+                android:text="@string/Description"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -73,7 +77,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Owner : " />
+                android:text="@string/Owner"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -84,7 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Category : " />
+                android:text="@string/Category"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -96,7 +102,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="In Exchange of : " />
+                android:text="@string/WantFor"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <Space
@@ -111,9 +118,11 @@
             <TextView
                 android:id="@+id/ExchangeItemNameDisplay"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loading..." />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -125,7 +134,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loading..." />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -136,7 +146,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loading..." />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -148,7 +159,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loading..." />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -160,7 +172,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loading..." />
+                android:text="@string/PlaceHolder"
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>
@@ -170,16 +183,17 @@
         android:layout_width="194dp"
         android:layout_height="46dp"
         android:layout_marginTop="44dp"
-        android:text="Interested?"
+        android:text="@string/Interested"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
 
     <ImageButton
         android:id="@+id/DeleteButtonExchangeItemDisplay"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="42dp"
+        android:layout_height="52dp"
         android:layout_marginTop="4dp"
+        android:background="@null"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

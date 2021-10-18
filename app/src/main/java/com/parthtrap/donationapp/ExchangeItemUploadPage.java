@@ -25,7 +25,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
 
-public class ExchangeItemRequest extends AppCompatActivity {
+public class ExchangeItemUploadPage extends AppCompatActivity {
 
     ImageView ItemImageBox;
     Button UploadImageButton, SubmitButton;
@@ -129,7 +129,7 @@ public class ExchangeItemRequest extends AppCompatActivity {
         DescBox = findViewById(R.id.ItemExchangeDescriptionForm);
         CategoryBox = findViewById(R.id.ItemExchangeCategoryForm);
         WantForBox = findViewById(R.id.ItemExchangeWantForForm);
-        itemInfo.setName(NameBox.getText().toString());
+        itemInfo.setName(NameBox.getText().toString().toLowerCase());
         itemInfo.setDescription(DescBox.getText().toString());
         itemInfo.setCategory(CategoryBox.getText().toString());
         itemInfo.setWantFor(WantForBox.getText().toString());

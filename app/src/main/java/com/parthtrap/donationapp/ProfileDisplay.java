@@ -42,7 +42,7 @@ public class ProfileDisplay extends AppCompatActivity {
     LinearLayout RatingLayout;
     EditText ReviewBox;
     RatingBar RatingBox;
-    Button SubmitRating;
+    Button SubmitRating, LocationChange;
     float NewRating = 0;
     int RatingCount = 0;
 
@@ -64,6 +64,7 @@ public class ProfileDisplay extends AppCompatActivity {
         RatingBox.setStepSize(1);
         RatingDisplay = findViewById(R.id.RatingDisplayDisplayPage);
         SubmitRating = findViewById(R.id.RatingSubmitButtonProfilePage);
+        LocationChange = findViewById(R.id.LocationChangeButtonProfilePage);
 
         if (id.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
             RatingLayout.setVisibility(View.INVISIBLE);
@@ -99,7 +100,7 @@ public class ProfileDisplay extends AppCompatActivity {
         adapter.setOnItemClickListener(new ProfilePageItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Intent intent = new Intent(ProfileDisplay.this, ExchangeItemView.class);
+                Intent intent = new Intent(ProfileDisplay.this, ExchangeItemViewPage.class);
                 intent.putExtra("id", documentSnapshot.getId());
                 intent.putExtra("idfrom", id);
                 startActivity(intent);
@@ -117,6 +118,16 @@ public class ProfileDisplay extends AppCompatActivity {
                     userCollection.document(id).collection("Ratings").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(ratingMap);
                     RefreshUserRatings(id);
                 }
+            }
+        });
+
+        LocationChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileDisplay.this, SignUpMapInfoPage.class);
+                intent.putExtra("idfrom", id);
+                startActivity(intent);
+                finish();
             }
         });
     }

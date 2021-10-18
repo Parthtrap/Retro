@@ -87,7 +87,7 @@ public class SignUpPage extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign In success, Redirect to Home Page
-                            Intent i = new Intent(SignUpPage.this, SignUpInfoInput.class);
+                            Intent i = new Intent(SignUpPage.this, SignUpInfoInputPage.class);
                             startActivity(i);
                             finish();
                         } else {
