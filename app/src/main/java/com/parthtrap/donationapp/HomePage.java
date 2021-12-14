@@ -25,7 +25,7 @@ import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
 
 public class HomePage extends AppCompatActivity {
 
-    TextView HomePageNameDisplay;
+    TextView HomePageNameDisplay, AdvancedSearch;
     Button ExchangeItem, DonateItem;
     ImageButton SearchButton;
     EditText SearchBox;
@@ -44,13 +44,28 @@ public class HomePage extends AppCompatActivity {
 
         HomePageNameDisplay = findViewById(R.id.TempTextView);
         ExchangeItem = findViewById(R.id.ExchangeItemButtonHomePage);
+        DonateItem = findViewById(R.id.DonateItemButtonHomePage);
         SearchButton = findViewById(R.id.HomePageSearchButton);
         SearchBox = findViewById(R.id.HomePageSearchBar);
+        AdvancedSearch = findViewById(R.id.AdvancedSearchButtonHomePage);
+
+        AdvancedSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomePage.this, AdvancedSearchPage.class);
+                startActivity(i);
+            }
+        });
 
         db.collection("UserProfiles").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String UserName = documentSnapshot.getString("name");
+                if (UserName == null) {
+                    Intent i = new Intent(HomePage.this, SignUpInfoInputPage.class);
+                    startActivity(i);
+                    finish();
+                }
                 HomePageNameDisplay.setText("Welcome " + UserName);
             }
         });
@@ -71,6 +86,14 @@ public class HomePage extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        DonateItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomePage.this, DonateItemUploadPage.class);
+                startActivity(i);
+            }
+        });
+
 
         FirestoreRecyclerOptions<ExchangeItemClass> options =
                 new FirestoreRecyclerOptions.Builder<ExchangeItemClass>().setQuery(itemCollection.orderBy("rating", Query.Direction.DESCENDING).limit(10), ExchangeItemClass.class).build();
@@ -105,7 +128,7 @@ public class HomePage extends AppCompatActivity {
                         intent.putExtra("id", documentSnapshot.getId());
                         intent.putExtra("idfrom", "null");
                         startActivity(intent);
-                        finish();
+                        //                        finish();
                     }
                 });
                 adapter.startListening();
@@ -119,7 +142,7 @@ public class HomePage extends AppCompatActivity {
                 intent.putExtra("id", documentSnapshot.getId());
                 intent.putExtra("idfrom", "null");
                 startActivity(intent);
-                finish();
+                //                finish();
             }
         });
         adapter.startListening();

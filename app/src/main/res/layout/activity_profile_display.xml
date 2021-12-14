@@ -9,6 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         tools:context=".ProfileDisplay">
 
         <TextView
@@ -165,9 +167,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ItemListRecyclerViewProfilePage"
-            android:layout_width="412dp"
-            android:layout_height="338dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="383dp"
+            android:layout_height="327dp"
+            android:layout_marginTop="44dp"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12">
@@ -180,6 +184,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="76dp"
             android:layout_weight="1"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"

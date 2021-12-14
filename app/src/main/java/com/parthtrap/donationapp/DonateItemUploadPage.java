@@ -23,37 +23,36 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
+import com.parthtrap.donationapp.HelperClasses.DonateItemClass;
 import com.parthtrap.donationapp.HelperFunctions.ItemLocationUpdate;
 
-public class ExchangeItemUploadPage extends AppCompatActivity {
+public class DonateItemUploadPage extends AppCompatActivity {
 
     ImageView ItemImageBox;
     Button UploadImageButton, SubmitButton;
-    EditText NameBox, DescBox, CategoryBox, WantForBox;
+    EditText NameBox, DescBox, CategoryBox;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser user = auth.getCurrentUser();
     FirebaseFirestore fsdb = FirebaseFirestore.getInstance();
     DocumentReference userDocument = fsdb.collection("UserProfiles").document(user.getUid());
-    CollectionReference exchangeItemCollection = fsdb.collection("ExchangeItems");
+    CollectionReference donateItemCollection = fsdb.collection("DonateItems");
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    ExchangeItemClass itemInfo = new ExchangeItemClass();
+    DonateItemClass itemInfo = new DonateItemClass();
 
     private Uri imageURI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exchange_item_request);
+        setContentView(R.layout.activity_donate_item_upload_page);
 
-        ItemImageBox = findViewById(R.id.ExchangeItemImageUploadForm);
-        UploadImageButton = findViewById(R.id.UploadExchangeImageButtonForm);
-        SubmitButton = findViewById(R.id.ExchangeItemSubmitButtonForm);
-        NameBox = findViewById(R.id.ItemExchangeNameForm);
-        DescBox = findViewById(R.id.ItemExchangeDescriptionForm);
-        CategoryBox = findViewById(R.id.ItemExchangeCategoryForm);
-        WantForBox = findViewById(R.id.ItemExchangeWantForForm);
+        ItemImageBox = findViewById(R.id.DonateItemImageUploadForm);
+        UploadImageButton = findViewById(R.id.UploadDonateImageButtonForm);
+        SubmitButton = findViewById(R.id.DonateItemSubmitButtonForm);
+        NameBox = findViewById(R.id.ItemDonateNameForm);
+        DescBox = findViewById(R.id.ItemDonateDescriptionForm);
+        CategoryBox = findViewById(R.id.ItemDonateCategoryForm);
 
         userDocument.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -61,7 +60,6 @@ public class ExchangeItemUploadPage extends AppCompatActivity {
                 itemInfo.setRating(documentSnapshot.getLong("rating"));
             }
         });
-
         UploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +86,7 @@ public class ExchangeItemUploadPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            ItemImageBox = findViewById(R.id.ExchangeItemImageUploadForm);
+            ItemImageBox = findViewById(R.id.DonateItemImageUploadForm);
             imageURI = data.getData();
             ItemImageBox.setImageURI(imageURI);
         }
@@ -96,7 +94,7 @@ public class ExchangeItemUploadPage extends AppCompatActivity {
 
     public void uploadFireBase() {
         StorageReference ref =
-                storage.getReference().child("Exchange Images").child(System.currentTimeMillis()
+                storage.getReference().child("Donate Images").child(System.currentTimeMillis()
                         + "."
                         + getContentResolver().getType(imageURI).substring(getContentResolver().getType(imageURI).lastIndexOf("/") + 1));
         ref.putFile(imageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -126,14 +124,12 @@ public class ExchangeItemUploadPage extends AppCompatActivity {
     }
 
     private void uploadData() {
-        NameBox = findViewById(R.id.ItemExchangeNameForm);
-        DescBox = findViewById(R.id.ItemExchangeDescriptionForm);
-        CategoryBox = findViewById(R.id.ItemExchangeCategoryForm);
-        WantForBox = findViewById(R.id.ItemExchangeWantForForm);
+        NameBox = findViewById(R.id.ItemDonateNameForm);
+        DescBox = findViewById(R.id.ItemDonateDescriptionForm);
+        CategoryBox = findViewById(R.id.ItemDonateCategoryForm);
         itemInfo.setName(NameBox.getText().toString().toLowerCase());
         itemInfo.setDescription(DescBox.getText().toString());
         itemInfo.setCategory(CategoryBox.getText().toString().toLowerCase());
-        itemInfo.setWantFor(WantForBox.getText().toString());
         itemInfo.setOwnerID(user.getUid());
         fsdb.collection("UserProfiles").document(user.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -145,7 +141,7 @@ public class ExchangeItemUploadPage extends AppCompatActivity {
             }
         });
 
-        exchangeItemCollection.add(itemInfo);
+        donateItemCollection.add(itemInfo);
         finish();
 
     }

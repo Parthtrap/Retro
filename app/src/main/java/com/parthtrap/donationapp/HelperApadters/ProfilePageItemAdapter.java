@@ -56,8 +56,7 @@ public class ProfilePageItemAdapter extends FirestoreRecyclerAdapter<ExchangeIte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (listener!=null)
-                    {
+                    if (listener != null) {
                         int position = getAdapterPosition();
                         listener.onItemClick(getSnapshots().getSnapshot(position), position);
                     }
@@ -72,6 +71,6 @@ public class ProfilePageItemAdapter extends FirestoreRecyclerAdapter<ExchangeIte
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
-this.listener = listener;
+        this.listener = listener;
     }
 }

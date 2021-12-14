@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
+        <activity android:name=".DonateItemUploadPage"></activity>
+        <activity android:name=".AdvancedSearchPage" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/API_KEY" />
@@ -16,7 +19,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".SignUpMapInfoPage"></activity>
+        <activity android:name=".SignUpMapInfoPage" />
         <activity android:name=".ExchangeItemViewPage" />
         <activity android:name=".ExchangeItemUploadPage" />
         <activity android:name=".LogInPage" />

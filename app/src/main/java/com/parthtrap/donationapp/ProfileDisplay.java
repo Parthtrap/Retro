@@ -67,8 +67,12 @@ public class ProfileDisplay extends AppCompatActivity {
         SubmitRating = findViewById(R.id.RatingSubmitButtonProfilePage);
         LocationChange = findViewById(R.id.LocationChangeButtonProfilePage);
 
+
         if (id.equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
             RatingLayout.setVisibility(View.INVISIBLE);
+        } else {
+            LocationChange.setVisibility(View.INVISIBLE);
+            LogOutButton.setVisibility(View.INVISIBLE);
         }
 
         userCollection.document(id).addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -168,20 +172,20 @@ public class ProfileDisplay extends AppCompatActivity {
     }
 
     private void RefreshItemRatings(String id) {
-        Log.d("Parthtrap", "onSuccess: Function Started");
+        Log.d("ItemRatingRefresh", "onSuccess: Function Started");
 
         itemCollection.whereEqualTo("ownerID", id).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                Log.d("Parthtrap", "onSuccess: Items Found");
+                Log.d("ItemRatingRefresh", "onSuccess: Items Found");
                 for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
-                    Log.d("Parthtrap", "onSuccess: " + snapshot.getId() + " Rating : " + NewRating);
+                    Log.d("ItemRatingRefresh", "onSuccess: " + snapshot.getId() + " Rating : " + NewRating);
                     itemCollection.document(snapshot.getId()).update("rating", NewRating);
                 }
-                Log.d("Parthtrap", "onSuccess: Items Changed");
+                Log.d("ItemRatingRefresh", "onSuccess: Items Changed");
             }
         });
-        Log.d("Parthtrap", "onSuccess: Function End");
+        Log.d("ItemRatingRefresh", "onSuccess: Function End");
     }
 
     @Override

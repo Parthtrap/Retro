@@ -140,16 +140,13 @@ public class ExchangeItemViewPage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         if (!BackID.equals("null")) {
             Intent i = new Intent(ExchangeItemViewPage.this, ProfileDisplay.class);
             i.putExtra("id", BackID);
             startActivity(i);
             finish();
         } else {
-            Intent i = new Intent(ExchangeItemViewPage.this, HomePage.class);
-            startActivity(i);
-            finish();
+            super.onBackPressed();
         }
 
     }

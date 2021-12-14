@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".AdvancedSearchPage">
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/SearchBarAdvanceSearch"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/log_in_edit_text_design"
+                android:ems="10"
+                android:hint="@string/SearchHere"
+                android:inputType="textPersonName" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/AdvancedSearchButton"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:scaleType="fitXY"
+
+                app:srcCompat="@drawable/search_icon_focused" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/DropDownListAdvancedSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background_gradient"
+            android:dropDownVerticalOffset="40dp"
+            android:paddingRight="10dp"
+            android:popupElevation="6dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/AdvancedSearchRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

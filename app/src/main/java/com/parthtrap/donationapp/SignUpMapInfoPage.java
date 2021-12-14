@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.parthtrap.donationapp.HelperFunctions.ItemLocationUpdate;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -35,6 +36,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
     boolean Filled = false;
     String Idfrom;
     Object OriginalLatitude, OriginalLongitude;
+    double NewLatitude, NewLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,8 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
         mapView.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
+                NewLatitude = latLng.latitude;
+                NewLongitude = latLng.longitude;
                 Map<String, Object> updates = new HashMap<>();
                 updates.put("longitude", latLng.longitude);
                 updates.put("latitude", latLng.latitude);
@@ -86,6 +90,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View v) {
                 if (Filled) {
+                    new ItemLocationUpdate(auth.getCurrentUser().getUid(), NewLatitude, NewLongitude);
                     if (Idfrom == null) {
                         Intent i = new Intent(SignUpMapInfoPage.this, HomePage.class);
                         startActivity(i);
@@ -106,13 +111,13 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
         if (OriginalLatitude != null) {
 
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Go Back?").setMessage("Changes will not be saved, You want to go " +
-                    "Back?").setNegativeButton(R.string.DeleteItemNo, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            }).setPositiveButton(R.string.DeleteItemYes, new DialogInterface.OnClickListener() {
+            alert.setTitle(R.string.MapBackTitle).setMessage(R.string.MapBackText).setNegativeButton(R.string.DeleteItemNo,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    }).setPositiveButton(R.string.DeleteItemYes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Map<String, Object> updates = new HashMap<>();

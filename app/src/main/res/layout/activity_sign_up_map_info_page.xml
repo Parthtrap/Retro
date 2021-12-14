@@ -23,11 +23,10 @@
     <fragment
         android:id="@+id/GoogleMapLocationInput"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="410dp"
-        android:layout_height="434dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="386dp"
+        android:layout_height="408dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26"
         tools:context=".MapsActivity" />
