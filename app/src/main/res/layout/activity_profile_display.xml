@@ -190,6 +190,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ItemListRecyclerViewProfilePage" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/DonateItemListRecyclerViewProfilePage"
             android:layout_width="387dp"

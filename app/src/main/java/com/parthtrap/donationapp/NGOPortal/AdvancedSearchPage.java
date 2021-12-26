@@ -7,8 +7,8 @@ Its slower than Normal Search but it can search items by their starting substrin
 
 package com.parthtrap.donationapp.NGOPortal;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,14 +27,17 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.parthtrap.donationapp.HelperApadters.AdvancedSearchDonateItemAdapter;
 import com.parthtrap.donationapp.HelperClasses.DonateItemClass;
+import com.parthtrap.donationapp.HelperClasses.LoggingClass;
 import com.parthtrap.donationapp.R;
-import com.parthtrap.donationapp.UserPortal.ExchangeItemViewPage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class AdvancedSearchPage extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+
+	// Log Message Tag
+	private final LoggingClass LOG = new LoggingClass("NGO_ADVANCED_SEARCH_PAGE_LOGS");
 
 	// Defining Front End Components
 	Spinner searchSpinner;
@@ -51,6 +54,9 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_advanced_search_page);
 
+		Log.d(LOG.getPAGES_LOG(), "NGO Advanced Search Page Created");
+		Log.d(LOG.getLOCAL_LOG(), "NGO Advanced Search Page Created");
+
 		// Linking Frontend to Backend via ID
 		advancedSearchBar = findViewById(R.id.SearchBarAdvanceSearch);
 		searchButton = findViewById(R.id.AdvancedSearchButton);
@@ -66,6 +72,7 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 		// Onclick on the Search Button
 		searchButton.setOnClickListener(new View.OnClickListener(){
 			@Override public void onClick(View v){
+				Log.d(LOG.getLOCAL_LOG(), "Search Button Pressed");
 				// String stored in a variable and checked if empty or not
 				searchedText = advancedSearchBar.getText().toString().toLowerCase();
 				if(!searchedText.isEmpty()){
@@ -76,7 +83,7 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 						// Getting all items with name starting with substring 'searchedText'
 						FirebaseFirestore.getInstance().collection("DonateItems").whereGreaterThanOrEqualTo("name", searchedText).whereLessThanOrEqualTo("name", searchedText + '\uf8ff').get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>(){
 							@Override public void onSuccess(QuerySnapshot queryDocumentSnapshots){
-
+								Log.d(LOG.getDATA_LOG(), "Item Data Recieved. Searched Parameters : (Name -> " + searchedText + ")");
 								// Refreshing the List and Filling it up again
 								itemStorage.clear();
 								for(QueryDocumentSnapshot snapshot : queryDocumentSnapshots){
@@ -96,7 +103,6 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 											return o2.getName().compareTo(o1.getName());
 									}
 								});
-								// Log.d("AdvSorting", itemStorage.toString());
 								AdapterDefining(); // Updating view Adapter
 							}
 						});
@@ -107,7 +113,7 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 						// Getting all items with name starting with substring 'searchedText'
 						FirebaseFirestore.getInstance().collection("DonateItems").whereGreaterThanOrEqualTo("category", searchedText).whereLessThanOrEqualTo("category", searchedText + '\uf8ff').get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>(){
 							@Override public void onSuccess(QuerySnapshot queryDocumentSnapshots){
-
+								Log.d(LOG.getDATA_LOG(), "Item Data Recieved. Searched Parameters : (Category -> " + searchedText + ")");
 								// Refreshing the List and Filling it up again
 								itemStorage.clear();
 								for(QueryDocumentSnapshot snapshot : queryDocumentSnapshots){
@@ -127,32 +133,37 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 											return o2.getName().compareTo(o1.getName());
 									}
 								});
-								// Log.d("AdvSorting", itemStorage.toString());
 								AdapterDefining(); // Updating view Adapter
 							}
 						});
 					}
 
 					// Invalid Choice... just in Case
-					else
+					else{
+						Log.d(LOG.getLOCAL_LOG(), "Achievement : \"How did we get here?\"");
+						// Yes.. This is a Minecraft Reference... Cuz Why Not XD
 						Toast.makeText(AdvancedSearchPage.this, "Invalid Search", Toast.LENGTH_SHORT).show();
+					}
 				}
 
 				// If Searched string is Empty
-				else
+				else{
+					Log.d(LOG.getLOCAL_LOG(), "Nothing was Searched");
 					Toast.makeText(AdvancedSearchPage.this, "Nothing to Search", Toast.LENGTH_SHORT).show();
+				}
 			}
 		});
 	}
 
 	// Putting The Arraylist in the Recycler view by updating the Adapter
 	private void AdapterDefining(){
+		Log.d(LOG.getLOCAL_LOG(), "Adapter : Check");
 		searchAdapter = new AdvancedSearchDonateItemAdapter(itemStorage);
 
 		// Setting onclicks on each Entry
 		searchAdapter.setOnItemClickListener(new AdvancedSearchDonateItemAdapter.OnItemClickListener(){
 			@Override public void onItemClick(DonateItemClass item, int position){
-				Toast.makeText(AdvancedSearchPage.this, "Item Clicked", Toast.LENGTH_SHORT).show();
+				Toast.makeText(AdvancedSearchPage.this, "Messaging Feature to be Added!", Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -163,6 +174,7 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 
 	// Defining the DropDown List.. aka Spinner
 	public void SpinnerDefining(){
+		Log.d(LOG.getLOCAL_LOG(), "Spinner : Check");
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(AdvancedSearchPage.this, R.layout.custom_spinner_advanced_search, getResources().getStringArray(R.array.AdvancedSearchSpinnerData));
 		spinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_advanced_search_drop_down);
 		searchSpinner.setAdapter(spinnerAdapter);
@@ -172,6 +184,7 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 	// On Pressing an item on the Spinner... Value stored in a variable
 	@Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
 		searchOptionText = parent.getItemAtPosition(position).toString();
+		Log.d(LOG.getLOCAL_LOG(), "Search Type : " + searchOptionText);
 	}
 
 	// Default Selection
@@ -181,7 +194,7 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 
 	// On Pressing back
 	@Override public void onBackPressed(){
-
+		Log.d(LOG.getLOCAL_LOG(), "Back was pressed");
 		// If Searchbar is Empty... Take back to previous activity
 		if(searchedText.isEmpty()){
 			super.onBackPressed();
@@ -196,5 +209,11 @@ public class AdvancedSearchPage extends AppCompatActivity implements AdapterView
 			searchDisplay.setAdapter(searchAdapter);
 			searchAdapter.notifyDataSetChanged();
 		}
+	}
+
+	// On Activity Destroy
+	@Override protected void onDestroy(){
+		Log.d(LOG.getPAGES_LOG(), "NGO Advanced Search Page Destroyed");
+		super.onDestroy();
 	}
 }

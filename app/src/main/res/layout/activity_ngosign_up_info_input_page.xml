@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/roboto_mono"
-        android:text="@string/sign_up"
+        android:text="@string/ngo_signup"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"

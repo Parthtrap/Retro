@@ -3,6 +3,7 @@ package com.parthtrap.donationapp.AuthenticationPages;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.parthtrap.donationapp.HelperClasses.LoggingClass;
 import com.parthtrap.donationapp.HelperFunctions.DonateItemLocationUpdate;
 import com.parthtrap.donationapp.HelperFunctions.ExchangeItemLocationUpdate;
 import com.parthtrap.donationapp.ProfileDisplay;
@@ -33,6 +35,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCallback{
+
+	// Log Message Tag
+	private final LoggingClass LOG = new LoggingClass("USER_SIGN_UP_MAP_PAGE_LOGS");
 
 	// Defining Front End Components
 	GoogleMap mapView;
@@ -52,6 +57,9 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up_map_info_page);
 
+		Log.d(LOG.getLOCAL_LOG(), "User Sign Up Map Page Created");
+		Log.d(LOG.getPAGES_LOG(), "User Sign Up Map Page Created");
+
 		// Linking the Submit Button to front End
 		getButton = findViewById(R.id.LocationSubmitButton);
 		getButton.setClickable(false);
@@ -63,6 +71,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 		// Store original Variables in a variable
 		fbfs.collection("UserProfiles").document(auth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>(){
 			@Override public void onSuccess(DocumentSnapshot documentSnapshot){
+				Log.d(LOG.getDATA_LOG(), "Original Co-ordinates Recieved and Stored");
 				OriginalLatitude = documentSnapshot.get("latitude");
 				OriginalLongitude = documentSnapshot.get("longitude");
 			}
@@ -76,6 +85,8 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 
 	// When Map is Ready... following is ran
 	@Override public void onMapReady(@NonNull @NotNull GoogleMap googleMap){
+		Log.d(LOG.getLOCAL_LOG(), "Google Map Created and Ready to use");
+
 		// Show Google Map on Screen
 		mapView = googleMap;
 
@@ -83,6 +94,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 		mapView.setOnMapClickListener(new GoogleMap.OnMapClickListener(){
 			@Override public void onMapClick(LatLng latLng){
 				// Store new co-ordinates in a variable and put them in a <String, float> hash map
+				Log.d(LOG.getLOCAL_LOG(), "New Co-ordinates Set");
 				NewLatitude = latLng.latitude;
 				NewLongitude = latLng.longitude;
 				Map<String, Object> updates = new HashMap<>();
@@ -97,6 +109,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 				// Update new location in current user's Database
 				FirebaseFirestore.getInstance().collection("UserProfiles").document(auth.getCurrentUser().getUid()).set(updates, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>(){
 					@Override public void onSuccess(Void unused){
+						Log.d(LOG.getDATA_LOG(), "New Co-Ordinates Uploaded to Database");
 						Filled = true; // Mark that user has filled his location
 					}
 				});
@@ -107,6 +120,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 		getButton.setClickable(true);
 		getButton.setOnClickListener(new View.OnClickListener(){
 			@Override public void onClick(View v){
+				Log.d(LOG.getLOCAL_LOG(), "Submit Button Clicked");
 				// If Filled... Redirect to next page
 				if(Filled){
 					// Update All user's Items in the database.
@@ -132,6 +146,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 
 	// On Pressing Back Button
 	@Override public void onBackPressed(){
+		Log.d(LOG.getLOCAL_LOG(), "Back Pressed.");
 		// If nothing is Entered but there is something already in the database...
 		if(OriginalLatitude != null){
 			// Give Alert that all the progress will be lost as they have not submitted
@@ -143,6 +158,7 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 				}
 			}).setPositiveButton(R.string.DeleteItemYes, new DialogInterface.OnClickListener(){
 				@Override public void onClick(DialogInterface dialog, int which){
+					Log.d(LOG.getLOCAL_LOG(), "Revert back to Original Co-Ordinates.");
 					// Put back the Original Coordinates
 					Map<String, Object> updates = new HashMap<>();
 					updates.put("longitude", OriginalLongitude);
@@ -156,7 +172,15 @@ public class SignUpMapInfoPage extends AppCompatActivity implements OnMapReadyCa
 			alert.create();
 		}
 		// If new user tries to press back... Ask them to enter location
-		else
+		else{
+			Log.d(LOG.getLOCAL_LOG(), "Location Not Filled... Back Press not Accepted");
 			Toast.makeText(this, "Enter Your Location", Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	// On Activity Destroy
+	@Override protected void onDestroy(){
+		Log.d(LOG.getPAGES_LOG(), "User Sign Up Map Page Destroyed");
+		super.onDestroy();
 	}
 }

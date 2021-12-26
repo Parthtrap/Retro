@@ -1,11 +1,15 @@
+/*
+Class Defined to store the Info about NGO
+ */
+
 package com.parthtrap.donationapp.HelperClasses;
 
 public class NGOInfoHelper{
 
-	String name = "";
-	String emailId = "";
-	String phoneNumber = "";
-	String address = "";
+	private String name = "";
+	private String emailId = "";
+	private String phoneNumber = "";
+	private String address = "";
 
 	public String getName(){
 		return name;

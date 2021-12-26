@@ -3,6 +3,7 @@ package com.parthtrap.donationapp.UserPortal;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
+import com.parthtrap.donationapp.HelperClasses.LoggingClass;
 import com.parthtrap.donationapp.ProfileDisplay;
 import com.parthtrap.donationapp.R;
 import com.squareup.picasso.Picasso;
@@ -28,6 +30,9 @@ import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 
 public class ExchangeItemViewPage extends AppCompatActivity{
+
+	// Log Message Tag
+	private final LoggingClass LOG = new LoggingClass("EXCHANGE_ITEM_DISPLAY_PAGE_LOGS");
 
 	// Defining Front End Components
 	TextView ItemNameBox, ItemDescBox, ItemCategoryBox, ItemWantForBox, ItemOwnerBox;
@@ -47,6 +52,9 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 	@Override protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_exchange_item_view);
+
+		Log.d(LOG.getPAGES_LOG(), "Exchange Item Display Page Created");
+		Log.d(LOG.getLOCAL_LOG(), "Exchange Item Display Page Created");
 
 		// Connecting Front end to back end via IDs
 		ItemNameBox = findViewById(R.id.ExchangeItemNameDisplay);
@@ -70,6 +78,7 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 		// Displaying Data on screen
 		fsdb.collection("ExchangeItems").document(ItemID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>(){
 			@Override public void onSuccess(DocumentSnapshot documentSnapshot){
+				Log.d(LOG.getDATA_LOG(), "Item Data Received");
 				ExchangeItemClass DisplayItem = documentSnapshot.toObject(ExchangeItemClass.class);
 				// Display item info in text Box
 				OwnerID = DisplayItem.getOwnerID();
@@ -90,6 +99,7 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 				fsdb.collection("UserProfiles").document(OwnerID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>(){
 					@Override public void onSuccess(DocumentSnapshot documentSnapshot){
 						// Setting Owner Name using the Owner ID attached to the Item object
+						Log.d(LOG.getDATA_LOG(), "Item Owner Data received");
 						ItemOwnerBox.setText(documentSnapshot.getString("name"));
 					}
 				});
@@ -99,6 +109,7 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 		// Onclick on Item Owner to redirect to his/her profile
 		ItemOwnerBox.setOnClickListener(new View.OnClickListener(){
 			@Override public void onClick(View v){
+				Log.d(LOG.getLOCAL_LOG(), "Clicked on Owner... redirecting to Profile Page");
 				Intent i = new Intent(ExchangeItemViewPage.this, ProfileDisplay.class);
 				i.putExtra("id", OwnerID);
 				startActivity(i);
@@ -108,6 +119,7 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 		// Alert Dialogue on Clicking Delete Button
 		DeleteItemButton.setOnClickListener(new View.OnClickListener(){
 			@Override public void onClick(View v){
+				Log.d(LOG.getLOCAL_LOG(), "Item Delete Press");
 				AlertDialog.Builder alert = new AlertDialog.Builder(ExchangeItemViewPage.this);
 				alert.setTitle(R.string.DeleteItemTitle).setMessage(R.string.DeleteItemText).setNegativeButton(R.string.DeleteItemNo, new DialogInterface.OnClickListener(){
 					@Override public void onClick(DialogInterface dialog, int which){
@@ -119,6 +131,7 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 							@Override public void onSuccess(DocumentSnapshot documentSnapshot){
 								//	Delete the Item as well as the Image from the database
 								FirebaseStorage.getInstance().getReferenceFromUrl(documentSnapshot.getString("imageURL")).delete();
+								Log.d(LOG.getDATA_LOG(), "Item Deleted");
 								if(!BackID.equals("null")){
 									// Go back to the profile page from where you were redirected here
 									Intent i = new Intent(ExchangeItemViewPage.this, ProfileDisplay.class);
@@ -143,6 +156,7 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 	}
 
 	@Override public void onBackPressed(){
+		Log.d(LOG.getLOCAL_LOG(), "Back Button Pressed");
 		if(!BackID.equals("null")){
 			// Go back to the profile page from where you were redirected here
 			Intent i = new Intent(ExchangeItemViewPage.this, ProfileDisplay.class);
@@ -154,5 +168,11 @@ public class ExchangeItemViewPage extends AppCompatActivity{
 			super.onBackPressed();
 		}
 
+	}
+
+	// On Activity Destroy
+	@Override protected void onDestroy(){
+		Log.d(LOG.getPAGES_LOG(), "Exchange Item View Page Destroyed");
+		super.onDestroy();
 	}
 }

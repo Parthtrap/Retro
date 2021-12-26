@@ -1,5 +1,6 @@
 package com.parthtrap.donationapp.HelperApadters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.parthtrap.donationapp.HelperClasses.DonateItemClass;
+import com.parthtrap.donationapp.HelperClasses.LoggingClass;
 import com.parthtrap.donationapp.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class AdvancedSearchDonateItemAdapter extends RecyclerView.Adapter<AdvancedSearchDonateItemAdapter.ViewHolder>{
+
+	// Log Message Tag
+	private final LoggingClass LOG = new LoggingClass("DONATE_ITEMS_ADVANCED_SEARCH_ADAPTER_LOGS");
 
 	private List<DonateItemClass> itemStorage;
 	OnItemClickListener listener;
@@ -38,7 +43,7 @@ public class AdvancedSearchDonateItemAdapter extends RecyclerView.Adapter<Advanc
 		holder.NameBox.setText(itemStorage.get(position).getName().substring(0, 1).toUpperCase() + itemStorage.get(position).getName().substring(1));
 		holder.DescBox.setText(itemStorage.get(position).getDescription());
 		Picasso.get().load(itemStorage.get(position).getImageURL()).into(holder.imageView);
-
+		Log.d(LOG.getLOCAL_LOG(), "Adapter Binded to View Holder");
 	}
 
 	// Keeping the count of the items to be displayed
@@ -57,6 +62,7 @@ public class AdvancedSearchDonateItemAdapter extends RecyclerView.Adapter<Advanc
 			imageView = itemView.findViewById(R.id.ImageItemRecyclerViewProfile);
 			NameBox = itemView.findViewById(R.id.NameItemRecyclerViewProfile);
 			DescBox = itemView.findViewById(R.id.DescItemRecyclerViewProfile);
+			Log.d(LOG.getLOCAL_LOG(), "View Holder Defined");
 
 			// Setting OnClick to view Holder
 			itemView.setOnClickListener(new View.OnClickListener(){

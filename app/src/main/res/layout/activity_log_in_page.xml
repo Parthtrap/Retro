@@ -10,11 +10,26 @@
     android:forceDarkAllowed="false"
     tools:context=".AuthenticationPages.LogInPage">
 
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="368dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:text="@string/user_login_page"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/EmailInputLoginPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/log_in_edit_text_design"
         android:drawableStart="@drawable/custom_email_icon"
         android:drawablePadding="10dp"
@@ -24,7 +39,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textView28" />
 
     <EditText
         android:id="@+id/PasswordInputLoginPage"
