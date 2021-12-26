@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonationApp">
-        <activity android:name=".DonateItemUploadPage"></activity>
-        <activity android:name=".AdvancedSearchPage" />
+        <activity android:name=".AuthenticationPages.NGOSignUpInfoInputPage"></activity>
+        <activity android:name=".NGOPortal.HomePage" />
+        <activity android:name=".AuthenticationPages.NGOSignUpPage" />
+        <activity android:name=".AuthenticationPages.NGOLoginPage" />
+        <activity android:name=".UserPortal.DonateItemUploadPage" />
+        <activity android:name=".UserPortal.AdvancedSearchPage" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -19,14 +23,15 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".SignUpMapInfoPage" />
-        <activity android:name=".ExchangeItemViewPage" />
-        <activity android:name=".ExchangeItemUploadPage" />
-        <activity android:name=".LogInPage" />
+        <activity android:name=".AuthenticationPages.SignUpMapInfoPage" />
+        <activity android:name=".UserPortal.ExchangeItemViewPage" />
+        <activity android:name=".UserPortal.ExchangeItemUploadPage" />
+        <activity android:name=".AuthenticationPages.LogInPage" />
         <activity android:name=".ProfileDisplay" />
-        <activity android:name=".HomePage" />
-        <activity android:name=".SignUpInfoInputPage" />
-        <activity android:name=".SignUpPage" />
+        <activity android:name=".UserPortal.HomePage" />
+        <activity android:name=".AuthenticationPages.SignUpInfoInputPage" />
+        <activity android:name=".AuthenticationPages.SignUpPage" />
+        <activity android:name=".NGOPortal.AdvancedSearchPage"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

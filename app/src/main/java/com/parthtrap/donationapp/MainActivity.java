@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.parthtrap.donationapp.UserPortal.HomePage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Sign Up Page On Click Listener
         SignUpPage.setOnClickListener(v -> {
-                    Intent i = new Intent(MainActivity.this, SignUpPage.class);
+                    Intent i = new Intent(MainActivity.this, com.parthtrap.donationapp.AuthenticationPages.SignUpPage.class);
                     startActivity(i);
                     finish();
                 }
         );
 
         LogInPage.setOnClickListener(v -> {
-                    Intent i = new Intent(MainActivity.this, LogInPage.class);
+                    Intent i = new Intent(MainActivity.this, com.parthtrap.donationapp.AuthenticationPages.LogInPage.class);
                     startActivity(i);
                     finish();
                 }

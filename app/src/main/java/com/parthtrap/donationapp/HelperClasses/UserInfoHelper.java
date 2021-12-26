@@ -3,70 +3,70 @@ package com.parthtrap.donationapp.HelperClasses;
 public class UserInfoHelper {
 
 
-    String Name = "";
-    String EmailId = "";
-    String PhoneNumber = "";
-    String Address = "";
-    Boolean PublicPhone = true;
-    float Rating = 0;
+    String name = "";
+    String emailId = "";
+    String phoneNumber = "";
+    String address = "";
+    Boolean publicPhone = true;
+    float rating = 0;
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmailId() {
-        return EmailId;
+        return emailId;
     }
 
     public void setEmailId(String emailId) {
-        EmailId = emailId;
+        this.emailId = emailId;
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public Boolean getPublicPhone() {
-        return PublicPhone;
+        return publicPhone;
     }
 
     public void setPublicPhone(Boolean publicPhone) {
-        PublicPhone = publicPhone;
+        this.publicPhone = publicPhone;
     }
 
     public float getRating() {
-        return Rating;
+        return rating;
     }
 
     public void setRating(float rating) {
-        Rating = rating;
+        this.rating = rating;
     }
 
     public UserInfoHelper() {
     }
 
     public UserInfoHelper(String name, String emailId, String phoneNumber, String address, Boolean publicPhone, float rating) {
-        Name = name;
-        EmailId = emailId;
-        PhoneNumber = phoneNumber;
-        Address = address;
-        PublicPhone = publicPhone;
-        Rating = rating;
+        this.name = name;
+        this.emailId = emailId;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.publicPhone = publicPhone;
+        this.rating = rating;
     }
 }

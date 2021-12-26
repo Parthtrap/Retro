@@ -7,7 +7,8 @@
     android:background="@drawable/background"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    tools:context=".AdvancedSearchPage">
+    android:forceDarkAllowed="false"
+    tools:context=".UserPortal.AdvancedSearchPage">
 
     <LinearLayout
         android:id="@+id/linearLayout12"

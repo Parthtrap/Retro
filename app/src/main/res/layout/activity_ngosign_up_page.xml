@@ -8,19 +8,19 @@
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:forceDarkAllowed="false"
-    tools:context=".AuthenticationPages.SignUpPage">
+    tools:context=".AuthenticationPages.NGOSignUpPage">
 
     <TextView
-        android:id="@+id/NGOSignUpRedirectSignUpPage"
+        android:id="@+id/UserSignUpRedirectSignUpPage"
         android:layout_width="241dp"
         android:layout_height="39dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="@string/ngo_signup"
+        android:text="@string/user_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogInPageRedirectSignUpPage" />
+        app:layout_constraintTop_toBottomOf="@+id/NGOLogInPageRedirectSignUpPage" />
 
     <TextView
         android:id="@+id/textView2"
@@ -69,7 +69,7 @@
                 android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/EmailInputSignupPage"
+                android:id="@+id/NGOEmailInputSignupPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
                 android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/PasswordInputSignUpPage"
+                android:id="@+id/NGOPasswordInputSignUpPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -136,7 +136,7 @@
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/ConfirmPasswordInputSignUpPage"
+                android:id="@+id/NGOConfirmPasswordInputSignUpPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -163,7 +163,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/SubmitButtonSignUpPage"
+                android:id="@+id/NGOSubmitButtonSignUpPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
@@ -178,12 +178,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/LogInPageRedirectSignUpPage"
+        android:id="@+id/NGOLogInPageRedirectSignUpPage"
         android:layout_width="238dp"
         android:layout_height="32dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="@string/already_a_user"
+        android:text="@string/already_a_ngo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

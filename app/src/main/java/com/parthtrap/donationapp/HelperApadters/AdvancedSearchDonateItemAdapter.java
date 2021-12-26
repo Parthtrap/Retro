@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.parthtrap.donationapp.HelperClasses.ExchangeItemClass;
+import com.parthtrap.donationapp.HelperClasses.DonateItemClass;
 import com.parthtrap.donationapp.R;
 import com.squareup.picasso.Picasso;
 
@@ -17,24 +17,24 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class AdvancedSearchItemAdapter extends RecyclerView.Adapter<AdvancedSearchItemAdapter.ViewHolder>{
+public class AdvancedSearchDonateItemAdapter extends RecyclerView.Adapter<AdvancedSearchDonateItemAdapter.ViewHolder>{
 
-	private List<ExchangeItemClass> itemStorage;
+	private List<DonateItemClass> itemStorage;
 	OnItemClickListener listener;
 
 	// Constructor
-	public AdvancedSearchItemAdapter(List<ExchangeItemClass> itemStorage){
+	public AdvancedSearchDonateItemAdapter(List<DonateItemClass> itemStorage){
 		this.itemStorage = itemStorage;
 	}
 
 	// Setting View Holder.... AKA the Individual Cards that are to be displayed in the recycler view
-	@NonNull @NotNull @Override public AdvancedSearchItemAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType){
+	@NonNull @NotNull @Override public AdvancedSearchDonateItemAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType){
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_display_profile_page, parent, false);
 		return new ViewHolder(view);
 	}
 
 	// Binding Items to the View Holder
-	@Override public void onBindViewHolder(@NonNull @NotNull AdvancedSearchItemAdapter.ViewHolder holder, int position){
+	@Override public void onBindViewHolder(@NonNull @NotNull AdvancedSearchDonateItemAdapter.ViewHolder holder, int position){
 		holder.NameBox.setText(itemStorage.get(position).getName().substring(0, 1).toUpperCase() + itemStorage.get(position).getName().substring(1));
 		holder.DescBox.setText(itemStorage.get(position).getDescription());
 		Picasso.get().load(itemStorage.get(position).getImageURL()).into(holder.imageView);
@@ -73,7 +73,7 @@ public class AdvancedSearchItemAdapter extends RecyclerView.Adapter<AdvancedSear
 	// creating an abstract class
 	public interface OnItemClickListener{
 
-		void onItemClick(ExchangeItemClass item, int position);
+		void onItemClick(DonateItemClass item, int position);
 	}
 
 	// OnItemClick Listener setter
