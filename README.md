@@ -1,5 +1,9 @@
 <!-- Back to the Top Div -->
-
+<div id="top"></div>
+<br/>
+<div align="center">
+  <img src="app/src/main/res/drawable/app_icon.png" alt="logo" width"80" height="80>
+</div>
 <!-- Heading -->
   <!-- Logo -->
   <!-- Title of the App -->
