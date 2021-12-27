@@ -2,7 +2,7 @@
 <div id="top"></div>
 <br/>
 <div align="center">
-  <img src="app/src/main/res/drawable/app_icon.png" alt="logo" width"80" height="80" style="border-radius:50">
+  <img src="app/src/main/res/drawable/app_icon.png" alt="logo" width"80" height="80" border-radius="50">
 </div>
 <!-- Heading -->
   <!-- Logo -->
