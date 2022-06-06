@@ -72,7 +72,12 @@
 ## Contribution
   <!-- Team Members with Email and GitHub Repos -->
 
-  
+  Team Name: Codester
+
+* [Jyotirmay Jain](https://github.com/jyotirmay27)
+* [Parth Mittal](https://github.com/Parthtrap)
+
+
 <div id="special_thanks"></div>
 <!-- Special Thanks to Avishkar -->
 ## Special Thanks
